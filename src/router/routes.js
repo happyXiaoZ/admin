@@ -10,13 +10,15 @@ import userMain from '@/views/userManage/userMain' //角色管理
 
 
 const route = [
-    {path:"/",component:login,name:'login'},
-    {path:"/main",component:main,name:'main',children:[
+	{path:'/',redirect:'/login'},
+    {path:"/login",component:login,name:'login'},
+    {path:"/main",redirect:'/main/modulePreview',component:main,name:'main',children:[
         {path:'/main/modulePreview',component:modulePreview,name:'modulePreview'},
         {path:'/main/defaultMain',component:defaultMain,name:'defaultMain'},
         {path:'/main/rightsMain',component:rightsMain,name:'rightsMain'},
         {path:'/main/userMain',component:userMain,name:'userMain'},
     ]},
+    {path:'*',redirect:'/'}
 ];
 
 export {route}

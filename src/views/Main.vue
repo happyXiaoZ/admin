@@ -1,31 +1,34 @@
 <template>
     <div id="main">
-        <div class="main-hdr" style="width:100%;height:8%;">
+        <el-container style="height:100%;">
+          <el-aside width="220px" style="height:100%;width:auto;min-width:222px;overflow:hidden;">
+              <Bodys></Bodys>
+          </el-aside>
+          <el-container>
+            <el-header style="padding: 0px;">
+                <Header></Header>
+            </el-header>
+            <el-main style="height:100%;">
+                <router-view></router-view>
+            </el-main>
+          </el-container>
+        </el-container>
+        <!-- <div class="main-hdr" style="width:100%;height:8%;">
             <Header></Header>
         </div>
         <div class="main-hdr" style="width:100%;height:92%;">
             <Bodys></Bodys>
-            <!-- <el-container class="bdr">
-            <el-aside class="bdr-lft" style="height:100%;width:auto;min-width:222px;overflow:hidden;">
-            <el-scrollbar style="height:100%;margin-top:17px;">
-                <navItem/><br/>
-            </el-scrollbar>
-            </el-aside>
-            <el-main class="bdr-rht" style="height:100%;">
-                <router-view></router-view>
-            </el-main>
-        </el-container> -->
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 import Header from '@/components/layout/Header'
 import Bodys from '@/components/layout/Bodys'
-import navItem from '@/components/navElement/navItem'
+// import navItem from '@/components/navElement/navItem'
 export default {
     components:{
-        Header,Bodys,navItem
+        Header,Bodys
     }
 }
 </script>
