@@ -1,6 +1,6 @@
 <template>
     <div id="moduleMain">
-        这是模块预览
+        这是一级菜单
     </div>
 </template>
 

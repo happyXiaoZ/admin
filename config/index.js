@@ -10,7 +10,18 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/api':{
+            //测试环境
+            //http://localhost:8080/admin
+            //http://ce.monihe.com/
+            target:'http://localhost:8080/admin',//接口域名
+            changeOrigin:true,//是否跨域
+            pathRewrite:{
+                '^/api':''
+            }
+        }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

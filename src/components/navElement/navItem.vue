@@ -10,12 +10,13 @@
                 <i :class="item.icon"></i>
                 <span>{{item.label}}</span>
             </el-menu-item>
+            <!-- 判断是否有子菜单 -->
             <el-submenu v-else :index="item.index">
                 <template slot="title">
                     <i :class="item.icon"></i>
                     <span>{{item.label}}</span>
                 </template>
-                <el-menu-item @click.native="toItemNav($event,index)" :key="index" v-for="(cItem,index) in item.children" :index="cItem.index">
+                <el-menu-item @click.native="toItemNav($event,index,cItem)" :key="index" v-for="(cItem,index) in item.children" :index="cItem.index">
                     <span>{{cItem.label}}</span>
                 </el-menu-item>
             </el-submenu>
@@ -36,10 +37,10 @@ export default {
         return {
             data:{"label":"导航菜单","index":"0","children":[
                     {"label":"一级菜单1","index":"01","path":"modulePreview","icon":"el-icon-news"}, 
-                    { "label": "一级菜单2","index":"02","icon":"el-icon-menu","path":"defaultMain"
+                    { "label": "一级菜单2","index":"02","icon":"el-icon-menu"
                         ,"children":[
-                        {"label":"子菜单1","index":"02-01"},
-                        {"label":"子菜单2","index":"02-02"}
+                        {"label":"子菜单1","index":"02-01","path":"defaultMain"},
+                        {"label":"子菜单2","index":"02-02","path":"defaultMain2"}
                     ]},
                     { "label": "一级菜单3","index":"03","icon":"el-icon-setting","path":"rightsMain"},
                     { "label": "一级菜单4","index":"04","icon":"el-icon-edit-outline","path":"userMain"},

@@ -42,12 +42,12 @@ export default {
 				],
 				pass:[
 					{required:true,message:'请输入密码'},
-					{min:6,max:15,message: '长度在 6 到 15 个字符'}
+					{min:4,max:15,message: '长度在 6 到 15 个字符'}
 				]
 			},
 			loginForm:{
-				acount:'',
-				pass:''
+				acount:'admin',
+				pass:'123456'
 			},
 			loading:false,
 			plain:false
@@ -57,14 +57,35 @@ export default {
         onSubmit(){
         	let that = this;
         	this.loading = true;
-        	setTimeout(()=>{
-        		that.loading = false;
+        	if (!that.loginForm.acount || !that.loginForm.pass) {
         		this.$message({
-		          message: '登录成功!',
-		          type: 'success'
+		          message: '登录信息不完全'
 		        });
-        		this.$router.push({name:'main', params:{flag:'登录成功!'}});
-        	},1000)
+		        return
+        	}
+        	let dat = {
+        		user:that.loginForm.acount,
+        		password:that.loginForm.pass
+        	}
+        	this.$api.getDemolist(dat).then(res => {
+        		console.log(res)
+        		if(res.status === 404){
+        			return
+        		}else{
+        			setTimeout(()=>{
+		        		this.$message({
+				          message: '登录成功!',
+				          type: 'success'
+				        });
+		        		this.$router.push({name:'main', params:{flag:'登录成功!'}});
+		        	},1000)
+        		}
+
+        	}, err => {
+        		console.log(err)
+        	})
+        	that.loading = false;
+        	
 
         }
     }

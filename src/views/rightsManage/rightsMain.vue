@@ -1,6 +1,6 @@
 <template>
-    <div id="rightsMain">
-        这是权限管理
+    <div id="rightsMain2">
+        这是子菜单2
     </div>
 </template>
 

@@ -7,7 +7,8 @@ const routes = route;
 
 const router = new vueRouter({
     routes,
-    mode:"history"
+    mode:"history",
+    base:__dirname
 })
 
 export {router}

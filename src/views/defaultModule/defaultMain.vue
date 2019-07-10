@@ -1,6 +1,6 @@
 <template>
     <div id="defaultMain">
-        这是预设模块
+        这是二级菜单
     </div>
 </template>
 
