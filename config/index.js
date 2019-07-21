@@ -15,7 +15,7 @@ module.exports = {
             //测试环境
             //http://localhost:8080/admin
             //http://ce.monihe.com/
-            target:'http://localhost:8080/admin',//接口域名
+            target:' https://www.easy-mock.com/mock/5d3402c6769fb06ebd300462/admin',//接口域名
             changeOrigin:true,//是否跨域
             pathRewrite:{
                 '^/api':''

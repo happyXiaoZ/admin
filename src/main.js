@@ -8,12 +8,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import {api} from '@/service/api.js'
+import {Messages} from '@/common/util.js'
 import Vuex from 'vuex'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
-
 Vue.prototype.$api= api
+Vue.prototype.$Messages = Messages
+
 Vue.config.productionTip = false
 
 //全局守卫  监听登录状态

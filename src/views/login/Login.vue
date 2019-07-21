@@ -58,32 +58,26 @@ export default {
         	let that = this;
         	this.loading = true;
         	if (!that.loginForm.acount || !that.loginForm.pass) {
-        		this.$message({
-		          message: '登录信息不完全'
-		        });
+        		this.$Messages.errMessage('登录信息不完全');
 		        return
         	}
         	let dat = {
         		user:that.loginForm.acount,
         		password:that.loginForm.pass
         	}
-        	this.$api.getDemolist(dat).then(res => {
-        		console.log(res)
-        		if(res.status === 404){
-        			return
-        		}else{
+        	that.$api.getDemolist(dat).then(res => {
+        		const TOKEN = '1fd399bdd9774831baf555ae5979c66b';
+        		if(res.status == 200){
+        			localStorage.setItem('token',TOKEN);
         			setTimeout(()=>{
-		        		this.$message({
-				          message: '登录成功!',
-				          type: 'success'
-				        });
-		        		this.$router.push({name:'main', params:{flag:'登录成功!'}});
+		        		that.$Messages.sucMessage('登录成功!');
+		        		that.$router.push({name:'main', params:{flag:'登录成功!'}});
 		        	},1000)
         		}
-
         	}, err => {
-        		console.log(err)
+        		that.$Messages.errMessage(err);
         	})
+        	
         	that.loading = false;
         	
 
